@@ -1,6 +1,6 @@
 # icelandic_holidays
 
-A Python library written to determine if a day is a holiday or a business day.
+A Python library written to determine if a day is an Icelandic holiday or a business day.
 
 ## Usage
 
