@@ -4,6 +4,7 @@ A Python library written to determine if a day is a holiday or a business day.
 
 ## Usage
 
+```
 from datetime import datetime
 from icelandic_holidays import is_businessday, is_holiday
 
@@ -12,6 +13,7 @@ if is_holiday(datetime.now()):
 
 now = datetime.now()
 is_holiday(now) != is_businessday(now) == True
+```
 
 ## License
 
