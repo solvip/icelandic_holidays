@@ -25,7 +25,8 @@
 import unittest
 
 from datetime import datetime, timedelta
-from icelandic_holidays import * 
+from icelandic_holidays import *
+from icelandic_holidays import __easter_sunday as easter_sunday
 
 class HolidayTests(unittest.TestCase):
     def setUp(self):
@@ -97,6 +98,9 @@ class HolidayTests(unittest.TestCase):
                     num_easter += 1
 
             self.assertEqual(num_easter, 1)
+
+    def test_bankdays(self):
+        self.assertTrue(is_bankday(datetime(2013, 12, 31)))
 
 
 if __name__ == "__main__":

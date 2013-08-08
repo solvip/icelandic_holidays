@@ -24,7 +24,7 @@
 from distutils.core import setup
 
 setup(name = "icelandic_holidays",
-      version = "0.5",
+      version = "0.6",
       author = "Sölvi Páll Ásgeirsson",
       author_email = "solvip@gmail.com",
       url = "http://github.com/solvip/icelandic_holidays",

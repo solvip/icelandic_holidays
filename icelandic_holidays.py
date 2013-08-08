@@ -59,11 +59,11 @@ references:
 
 from datetime import datetime, timedelta
 
-_holiday_funs = []
+__holiday_funs = []
 
-def holiday_fun(f):
-    if f not in _holiday_funs:
-        _holiday_funs.append(f)
+def __holiday_fun(f):
+    if f not in __holiday_funs:
+        __holiday_funs.append(f)
     return f
 
 def get_easter_sunday(year):
@@ -89,28 +89,28 @@ def get_easter_sunday(year):
 
     return datetime(year, month, day)
 
-@holiday_fun
-def january_1st(dt):
+@__holiday_fun
+def __january_1st(dt):
     return dt.month == 1 and dt.day == 1
 
-@holiday_fun
-def holy_thursday(dt):
+@__holiday_fun
+def __holy_thursday(dt):
     return dt.date() == (get_easter_sunday(dt.year) - timedelta(days=3)).date()
 
-@holiday_fun
-def good_friday(dt):
+@__holiday_fun
+def __good_friday(dt):
     return dt.date() == (get_easter_sunday(dt.year) - timedelta(days=2)).date()
 
-@holiday_fun
-def easter_sunday(dt):
+@__holiday_fun
+def __easter_sunday(dt):
     return get_easter_sunday(dt.year).date() == dt.date()
 
-@holiday_fun
-def easter_monday(dt):
+@__holiday_fun
+def __easter_monday(dt):
     return get_easter_sunday(dt.year).date() + timedelta(days=1) == dt.date()
 
-@holiday_fun
-def first_day_of_summer(dt):
+@__holiday_fun
+def __first_day_of_summer(dt):
     if dt.month != 4:
         return False
     
@@ -121,28 +121,28 @@ def first_day_of_summer(dt):
         d = d + timedelta(days=1)
     return dt.date() == d.date()
 
-@holiday_fun
-def may_1st(dt):
+@__holiday_fun
+def __may_1st(dt):
     return dt.month == 5 and dt.day == 1
 
-@holiday_fun
-def ascension_of_jesus(dt):
+@__holiday_fun
+def __ascension_of_jesus(dt):
     return dt.date() == (get_easter_sunday(dt.year) + timedelta(39)).date()
 
-@holiday_fun
-def pentecost(dt):
+@__holiday_fun
+def __pentecost(dt):
     return dt.date() == (get_easter_sunday(dt.year) + timedelta(49)).date()
 
-@holiday_fun
-def whit_monday(dt):
+@__holiday_fun
+def __whit_monday(dt):
     return dt.date() == (get_easter_sunday(dt.year) + timedelta(50)).date()
 
-@holiday_fun
-def june_17th(dt):
+@__holiday_fun
+def __june_17th(dt):
     return dt.month == 6 and dt.day == 17
 
-@holiday_fun
-def merchant_holiday(dt):
+@__holiday_fun
+def __merchant_holiday(dt):
     if dt.month != 8:
         return False
 
@@ -153,20 +153,20 @@ def merchant_holiday(dt):
         d = d + timedelta(days=1)
     return dt.date() == d.date()
 
-@holiday_fun
-def christmas_eve(dt):
+@__holiday_fun
+def __christmas_eve(dt):
     return dt.month == 12 and dt.day == 24
 
-@holiday_fun
-def christmast_day(dt):
+@__holiday_fun
+def __christmast_day(dt):
     return dt.month == 12 and dt.day == 25
 
-@holiday_fun
-def second_day_of_christmas(dt):
+@__holiday_fun
+def __second_day_of_christmas(dt):
     return dt.month == 12 and dt.day == 26
 
-@holiday_fun
-def new_years_eve(dt):
+@__holiday_fun
+def __new_years_eve(dt):
     return dt.month == 12 and dt.day == 31
 
 def is_weekday(dt):
@@ -175,7 +175,7 @@ def is_weekday(dt):
 
 def is_holiday(dt):
     """ Accepts a datetime object, returns True if it is a holiday, False otherwise. """
-    for fun in _holiday_funs:
+    for fun in __holiday_funs:
         if fun(dt):
             return True
     return False
@@ -186,4 +186,4 @@ def is_businessday(dt):
 
 def is_bankday(dt):
     """ Accepts a datetime object, returns True if it represents a bank day. """
-    return is_businessday(dt) or new_years_eve(dt)
+    return is_businessday(dt) or __new_years_eve(dt)
