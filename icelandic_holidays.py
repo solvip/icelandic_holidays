@@ -186,4 +186,4 @@ def is_businessday(dt):
 
 def is_bankday(dt):
     """ Accepts a datetime object, returns True if it represents a bank day. """
-    return is_businessday(dt) or __new_years_eve(dt)
+    return is_businessday(dt) or (__new_years_eve(dt) and is_weekday(dt))

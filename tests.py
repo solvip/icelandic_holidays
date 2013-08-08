@@ -101,6 +101,9 @@ class HolidayTests(unittest.TestCase):
 
     def test_bankdays(self):
         self.assertTrue(is_bankday(datetime(2013, 12, 31)))
+        self.assertTrue(is_bankday(datetime(2014, 12, 31)))
+        self.assertTrue(is_bankday(datetime(2015, 12, 31)))
+        self.assertFalse(is_bankday(datetime(2016, 12, 31))) # Dec. 31st is a saturday
 
 
 if __name__ == "__main__":
