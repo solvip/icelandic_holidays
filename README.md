@@ -2,7 +2,8 @@
 
 A Python library written to determine if a day is an Icelandic holiday or a business day.
 
-## Installing
+## Installation
+
 ```
 pip install icelandic_holidays
 ```
